@@ -9,11 +9,11 @@ function Main(props) {
   
   React.useEffect(() => {
     Promise.all([api.getUser(), api.getCards()])
-      .then(result => {
-        setUserName(result[0].name);
-        setUserDescription(result[0].about);
-        setUserAvatar(result[0].avatar);
-        setCards(result[1].reverse());
+      .then(([userData, cards]) => {
+        setUserName(userData.name);
+        setUserDescription(userData.about);
+        setUserAvatar(userData.avatar);
+        setCards(cards.reverse());
       })
       .catch(() => console.log(`Ошибка загрузки данных`));
   }, []);
@@ -32,10 +32,7 @@ function Main(props) {
           <button type="button" onClick={props.onAddPlace} className="button button_action_add" aria-label="добавить"></button>
         </section>
         <section className="cards content__cards"> 
-           {cards.map((card, i) => <Card  key={i} card={card}
-                                          // name={card.name} 
-                                          // link={card.link} 
-                                          // likes={Array.from(card.likes).map((item) => {return item._id})}
+           {cards.map((card, i) => <Card  key={card._id} card={card}
                                           onCardClick={props.onCardClick}/>
                                 )}       
         </section>
