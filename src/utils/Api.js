@@ -4,6 +4,7 @@ class Api {
     this._url = options.url;
     this._authorization = options.headers.authorization;
   }
+  
   _checkResponse(res) {
     if (res.ok) {
       return res.json();
@@ -18,7 +19,7 @@ class Api {
         'Content-Type': 'application/json',
       }
     })
-    .then(this._checkResponse);
+      .then(this._checkResponse);
   }
 
   getCards() {
@@ -28,9 +29,9 @@ class Api {
         'Content-Type': 'application/json',
       }
     })
-    .then(this._checkResponse);
+      .then(this._checkResponse);
   }
-  
+
   getAllData() {
     return Promise.all([this.getUser(), this.getCards()])
   }
@@ -47,9 +48,9 @@ class Api {
         about: user.about
       })
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
-     
+
   postCard(newCard) {
     return fetch(`${this._url}/cards`, {
       method: 'POST',
@@ -62,7 +63,7 @@ class Api {
         link: newCard.link
       })
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
 
   deleteCard(delCardId) {
@@ -72,7 +73,7 @@ class Api {
         authorization: this._authorization,
       },
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
 
   likeYes(id) {
@@ -82,19 +83,23 @@ class Api {
         authorization: this._authorization,
       },
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
-      
+
   likeNo(id) {
     return fetch(`${this._url}/cards/likes/${id} `, {
-    method: "DELETE",
+      method: "DELETE",
       headers: {
         authorization: this._authorization,
       },
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
-      
+
+  changeLikeCardStatus(id, isNoLiked) {
+    return (isNoLiked ? this.likeYes(id) : this.likeNo(id))
+  }
+
   changeAvatar(user) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
@@ -106,7 +111,7 @@ class Api {
         avatar: user.avatar
       })
     })
-    .then(this._checkResponse); 
+      .then(this._checkResponse);
   }
 }
 
