@@ -19,13 +19,16 @@ function AddPlacePopup({ isOpen, closePopups, onAddPlace }) {
       name: cardName,
       link: cardLink
     });
-
-    setCardName('');
-    setCardLink('');
   }
 
+  React.useEffect(() => {
+    setCardName('');
+    setCardLink('');
+  }, [isOpen]);
+  
+
   return (
-    <PopupWithForm isOpen={isOpen} name='add' title='Новое место' textButton='Создать' 
+    <PopupWithForm isOpen={isOpen} name='add' title='Новое место' buttonText='Создать' 
                    closePopups={closePopups} onSubmit={handleSubmit} >
       <ul className="popup__fields">
         <li>

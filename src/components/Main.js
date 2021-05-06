@@ -19,7 +19,7 @@ function Main(props) {
                 onClick={props.onAddPlace} aria-label="добавить" />
       </section>
       <section className="cards content__cards">
-        {props.cards.map((card, i) => <Card key={card._id} card={card}
+        {props.cards.map((card) => <Card key={card._id} card={card}
                                             onCardClick={props.onCardClick}
                                             onCardLike={props.onCardLike}
                                             onCardDelete={props.onCardDelete} />

@@ -76,28 +76,14 @@ class Api {
       .then(this._checkResponse);
   }
 
-  likeYes(id) {
-    return fetch(`${this._url}/cards/likes/${id} `, {
-      method: "PUT",
-      headers: {
-        authorization: this._authorization,
-      },
-    })
-      .then(this._checkResponse);
-  }
-
-  likeNo(id) {
-    return fetch(`${this._url}/cards/likes/${id} `, {
-      method: "DELETE",
-      headers: {
-        authorization: this._authorization,
-      },
-    })
-      .then(this._checkResponse);
-  }
-
   changeLikeCardStatus(id, isNoLiked) {
-    return (isNoLiked ? this.likeYes(id) : this.likeNo(id))
+    return fetch(`${this._url}/cards/likes/${id} `, {
+      method: isNoLiked ? 'PUT' : 'DELETE',
+      headers: {
+        authorization: this._authorization,
+      },
+    })
+      .then(this._checkResponse);
   }
 
   changeAvatar(user) {

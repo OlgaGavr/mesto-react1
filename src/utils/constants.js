@@ -1,12 +1,3 @@
-export const configValidation = {
-  formSelector: '.form',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.button_action_save',
-  inactiveButtonClass: 'button_inactive',
-  inputErrorClass: 'popup__field_type_error',
-  errorClass: 'popup__field-error_active'
-};
-
 export const options = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-21',
   headers: {

@@ -1,6 +1,6 @@
 function ImagePopup({ card, closePopups }) {
   return (
-    <article className={card ? `popup popup_type_preview popup_opened` : `popup popup_type_preview`}>
+    <article className={`popup popup_type_preview ${card ? 'popup_opened' : ''}`}>
       <div className="popup__container-preview">
         <figure className="popup__figure">
           <img className="popup__image" alt={card ? card.name : null} src={card ? card.link : null} />

@@ -17,7 +17,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState(null);
 
-  const [currentUser, setCurentUser] = React.useState('');
+  const [currentUser, setCurentUser] = React.useState({});
   const [cards, setCards] = React.useState([]);
 
   React.useEffect(() => {
@@ -122,7 +122,7 @@ function App() {
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} closePopups={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
         <AddPlacePopup isOpen={isAddPlacePopupOpen} closePopups={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
 
-        <PopupWithForm name='delete' title='Вы уверены?' textButton='Да' />
+        <PopupWithForm name='delete' title='Вы уверены?' buttonText='Да' />
         <ImagePopup card={selectedCard} closePopups={closeAllPopups} />
       </div>
     </CurrentUserContext.Provider>

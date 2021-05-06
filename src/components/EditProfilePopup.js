@@ -15,9 +15,14 @@ function EditProfilePopup({ isOpen, closePopups, onUpdateUser }) {
 
   const currentUser = React.useContext(CurrentUserContext);
   React.useEffect(() => {
-    currentUser.name !== undefined && setName(currentUser.name);
-    currentUser.about !== undefined && setDescription(currentUser.about);
-  }, [currentUser]);
+    if (currentUser.name !== undefined) {
+      setName(currentUser.name);
+    }
+    if (currentUser.about !== undefined) {  
+      setDescription(currentUser.about);
+    }
+  }, [isOpen]);
+  
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,7 +33,7 @@ function EditProfilePopup({ isOpen, closePopups, onUpdateUser }) {
   }
 
   return(
-    <PopupWithForm name='edit' title='Редактировать профиль' textButton='Сохранить' 
+    <PopupWithForm name='edit' title='Редактировать профиль' buttonText='Сохранить' 
                    isOpen={isOpen} closePopups={closePopups} onSubmit={handleSubmit} >
       <ul className="popup__fields">
         <li>

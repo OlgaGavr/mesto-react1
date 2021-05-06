@@ -3,7 +3,7 @@ function Header() {
   return (
     <header className="header page__header">
       <a href="#" target="_blank" rel="noopener">
-        <img src={logo} alt='Логотип' className="header__logo" />
+        <img src={logo} alt='Логотип Место Россия' className="header__logo" />
       </a>
     </header>
   )

@@ -8,8 +8,12 @@ function EditAvatarPopup({ isOpen, closePopups, onUpdateAvatar }) {
     onUpdateAvatar({ avatar: imageRef.current.value });
   }
 
+  React.useEffect(() => {
+    imageRef.current.value='';
+  }, [isOpen]);
+  
   return (
-    <PopupWithForm name='edit-avatar' title='Обновить аватар' textButton='Сохранить'
+    <PopupWithForm name='edit-avatar' title='Обновить аватар' buttonText='Сохранить'
                    isOpen={isOpen} closePopups={closePopups} onSubmit={handleSubmit} >
       <ul className="popup__fields">
         <li>
